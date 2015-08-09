@@ -70,7 +70,7 @@
 			</table>
 			
 			<nav>
-			<g:link class="create"  id="btnAddTask" action="create"><g:message code="Adicionar tarefa" args="[entityName]" /></g:link>
+			<g:link class="create"  id="btnAddTask" action="create"><g:message code=" Nova tarefa" args="[entityName]" /></g:link>
 			<g:link controller="category" action="index"><g:message code="Categorias" args="[Category]" /></g:link>
 					
 			</nav>

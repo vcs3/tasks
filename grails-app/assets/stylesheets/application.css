@@ -91,7 +91,7 @@ nav {
 .deleteRow {
 	background: #53777a;
 	color: #fff;
-	width: 100px;
+	width: 80px;
 	text-decoration: none;
 	border: 1px solid #5b5b5b;
 	font-size: 13px;
@@ -106,7 +106,7 @@ nav {
 nav a {
 	background: #53777a;
 	color: #fff;
-	width: 100px;
+	width: 80px;
 	text-decoration: none;
 	border: 1px solid #5b5b5b;
 	font-size: 13px;
