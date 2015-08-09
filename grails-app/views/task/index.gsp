@@ -28,7 +28,7 @@
 					<col width="15%">
 					<col width="30%">
 				</colgroup>
-				</colgroup>
+			
 			<thead>
 					<tr>
 					
@@ -44,14 +44,31 @@
 				</thead>
 				<tbody>
 				<g:each in="${taskInstanceList}" status="i" var="taskInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+				
+					<%
+						deadline = taskInstance.requiredBy
+						now = new Date().clearTime()
+						dia = now.plus(2)
+
+						if(deadline < now){
+							 classe = "overdue"
+						}else if(deadline >= now && deadline <= dia){
+							classe= "warning"
+						}else{
+							classe = ""
+						}						
+					%>
+					<tr class="${classe}">
 					
-						<td><g:link action="edit" id="${taskInstance.id}">${fieldValue(bean: taskInstance, field: "task")}</g:link></td>
+						<td class="${taskInstance?.complete ? 'taskCompleted':''}">
+						<g:link action="edit" id="${taskInstance.id}">${fieldValue(bean: taskInstance, field: "task")}</g:link></td>
 					
-						<td><g:formatDate date="${taskInstance.requiredBy}" /></td>
+						<td class="${taskInstance?.complete ? 'taskCompleted':''}">
+						<g:formatDate date="${taskInstance.requiredBy}" /></td>
 
 					
-						<td>${fieldValue(bean: taskInstance, field: "category")}</td>
+						<td class="${taskInstance?.complete ? 'taskCompleted':''}">
+						${fieldValue(bean: taskInstance, field: "category")}</td>
 										<td>
 					<nav>
 					<g:link class="editRow" action="edit" id="${taskInstance.id}">Editar</g:link>
@@ -60,7 +77,7 @@
 					<g:form url="[resource:taskInstance, action:'delete']" method="DELETE">
       			 <g:actionSubmit class="deleteRow" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
     </g:form>
-    <g:link class="completeRow" action="edit" id="${taskInstance.id}">Completar</g:link>
+    <g:link class="completeRow" action="completed"  resource="${taskInstance}" >Completar</g:link>
 					</nav>
     
 </td>
@@ -76,7 +93,7 @@
 			</nav>
 			<br clear="all"/>
 			<footer>Você tem <span id="taskCount">
-			${taskInstance}</span> tarefa(s) aberta(s)</footer>
+			<g:include controller="task" action="count" /></span> tarefa(s) aberta(s)</footer>
 			
 		</div>
 	</body>

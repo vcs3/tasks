@@ -3,6 +3,8 @@ package tasks
 
 
 import static org.springframework.http.HttpStatus.*
+
+
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
@@ -22,6 +24,7 @@ class CategoryController {
     def create() {
         respond new Category(params)
     }
+
 
     @Transactional
     def save(Category categoryInstance) {

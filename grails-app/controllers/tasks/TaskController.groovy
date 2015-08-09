@@ -51,6 +51,22 @@ class TaskController {
         respond taskInstance
     }
 
+	
+	def completed(Task taskInstance){
+		if (taskInstance == null) {
+			notFound()
+			return
+		}
+		def task =taskInstance
+		task.complete=true
+		
+		taskInstance.save flush:true
+		redirect action:"index", method:"GET"
+	}
+	def count(){
+		render Task.countByComplete(false)
+	}
+
     @Transactional
     def update(Task taskInstance) {
         if (taskInstance == null) {

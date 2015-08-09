@@ -19,16 +19,17 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
+			
+			<nav>
 			<g:form url="[resource:taskInstance, action:'save']" >
 			
 					<g:render template="form"/>
 			
-				<nav>
+				
 				 	<g:submitButton name="create" id="saveTask"  class="save" value="${message(code: 'Salvar Tarefa', default: 'Salvar')}" />
 					<a href="#" id="clearTask">Limpar tarefa</a>
-					<a href="#" id="returnTask">
-						<g:link class="list" action="index"><g:message code="Voltar" args="[entityName]" /></g:link>
-					</a>
+			
+					
 				</nav>
 				
 				

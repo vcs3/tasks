@@ -143,6 +143,7 @@ input {
 
 input.large {
 	width: 400px;
+	text-align:left;
 }
 
 select {

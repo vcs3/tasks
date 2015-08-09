@@ -4,17 +4,17 @@
 		<span>Lista de Tarefas</span>
 	</header>
 	<main id="taskPage">
-	
+	<section id="taskCreation" >
 <div class=" ${hasErrors(bean: taskInstance, field: 'task', 'error')} required">
 	<label for="task">
 		<g:message code="task.task.label" default="Tarefa" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="task" required="" value="${taskInstance?.task}"/>
+	 <g:textField name="task" class="large"  required="" value="${taskInstance?.task}" />
 
 </div>
 
-<div  class=" ${hasErrors(bean: taskInstance, field: 'requiredBy', 'error')} required">
+ <div  class=" ${hasErrors(bean: taskInstance, field: 'requiredBy', 'error')} required">
 	<label for="requiredBy">
 		<g:message code="task.requiredBy.label" default="Finalizar até" />
 		<span class="required-indicator">*</span>
@@ -25,7 +25,7 @@
 
 <div class="${hasErrors(bean: taskInstance, field: 'complete', 'error')} ">
 	<label for="complete">
-		<g:message code="task.complete.label" default="Complete" />
+		<g:message code="task.complete.label" default="Finalizado?" />
 		
 	</label>
 	<g:checkBox name="complete" value="${taskInstance?.complete}" />
@@ -40,4 +40,4 @@
 	<g:select id="category" name="category.id" from="${tasks.Category.list()}" optionKey="id" required="" value="${taskInstance?.category?.id}" class="many-to-one"/>
 
 </div>
-
+</section>
