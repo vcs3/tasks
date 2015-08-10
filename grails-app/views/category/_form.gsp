@@ -1,7 +1,5 @@
 <%@ page import="tasks.Category" %>
-<header>
-		<span>Lista de Categorias</span>
-	</header>
+
 <main id="taskPage">
 
 <div class=" ${hasErrors(bean: categoryInstance, field: 'description', 'error')} required">

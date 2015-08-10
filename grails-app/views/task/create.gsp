@@ -7,8 +7,11 @@
 	</head>
 	<body>
 		
+		<header>
+		<span>Lista de tarefas</span>
+	</header>
 		<div id="create-task" class="content scaffold-create" role="main">
-			
+					<section id="taskCreation" >
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -19,22 +22,23 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
+	
+		
 			
-			<nav>
-			<g:form url="[resource:taskInstance, action:'save']" >
-			
-					<g:render template="form"/>
+		
+			     <g:form url="[resource:taskInstance, action:'save']" >
+			     	<g:render template="form"/>
+			     	<nav>
+				 	 <g:submitButton name="create" id="saveTask"  class="save" value="${message(code: 'Salvar ', default: 'Salvar')}" />
+				   	 <input type="button" name="clear" id="clearTask"  class="clear" value="${message(code: 'Limpar', default: 'Limpar')}" />
+					</nav>
+				   </g:form>		
+				 
 			
 				
-				 	<g:submitButton name="create" id="saveTask"  class="save" value="${message(code: 'Salvar Tarefa', default: 'Salvar')}" />
-					<a href="#" id="clearTask">Limpar tarefa</a>
-			
-					
-				</nav>
-				
 				
 			
-			</g:form>
+			</section>
 		</div>
 	</body>
 </html>

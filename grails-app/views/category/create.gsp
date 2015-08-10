@@ -5,7 +5,12 @@
 		<g:set var="entityName" value="${message(code: 'category.label', default: 'Category')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
+	
+	
 	<body>
+	<header>
+		<span>Lista de Categorias</span>
+	</header>
 		<a href="#create-category" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		
 		<div id="create-category" class="content scaffold-create" role="main">

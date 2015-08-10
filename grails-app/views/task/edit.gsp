@@ -8,7 +8,11 @@
 	</head>
 	<body>
 		
+			<header>
+		<span>Lista de tarefas</span>
+	</header>
 		<div id="edit-task" class="content scaffold-edit" role="main">
+		<section id="taskCreation" >
 			
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
@@ -22,14 +26,15 @@
 			</g:hasErrors>
 			<g:form url="[resource:taskInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${taskInstance?.version}" />
-				<fieldset class="form">
+			
 					<g:render template="form"/>
-				</fieldset>
+			
 			
 				<nav>
 					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
 				</nav>
 			</g:form>
+			</section>
 		</div>
 	</body>
 </html>

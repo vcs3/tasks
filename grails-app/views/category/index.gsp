@@ -20,12 +20,19 @@
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<table>
+				  <colgroup>
+					<col width="90%">
+					<col width="10%">
+					
+				</colgroup>
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="description" title="${message(code: 'category.description.label', default: 'Description')}" />
-					
+						<g:sortableColumn property="description" title="${message(code: 'category.description.label', default: 'Descrição')}" />
+						<th></th>
 					</tr>
+					
+				
 				</thead>
 				<tbody>
 				<g:each in="${categoryInstanceList}" status="i" var="categoryInstance">
@@ -33,17 +40,20 @@
 					
 						<td><g:link action="edit" id="${categoryInstance.id}">${fieldValue(bean: categoryInstance, field: "description")}</g:link></td>
 					
+					<td>
+							<g:form url="[resource:categoryInstance, action:'delete']" method="DELETE">
+      			 <g:actionSubmit class="deleteRow" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+    </g:form>
+    </td>
 					</tr>
 				</g:each>
 				</tbody>
 			</table>
 			<nav>
-			<g:link class="create" action="create"><g:message code="Nova Categoria" args="[entityName]" /></g:link>
+			<g:link class="create" action="create"><g:message code="Novo" args="[entityName]" /></g:link>
 			<g:link  controller="task"><g:message code="Voltar" args="[entityName]" /></g:link>
 			</nav>
-			<div class="pagination">
-				<g:paginate total="${categoryInstanceCount ?: 0}" />
-			</div>
+			
 		</div>
 	</body>
 </html>
